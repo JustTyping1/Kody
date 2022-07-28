@@ -1,14 +1,15 @@
 package main
 
 import (
+	"bufio"
+
 	"github.com/gocolly/colly"
+	//"strconv"
 )
 
-type reading struct {
-	Temp string `json:"temp"`
-}
-
 func main() {
+	scanner = bufio.NewScanner(os)
+
 	c := colly.NewCollector()
 	c.OnHTML("span[class=wr-value--temperature--c]", func(h *colly.HTMLElement) {
 		println(h.ChildText("span[aria-hidden=true]"))
