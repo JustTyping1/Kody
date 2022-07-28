@@ -10,9 +10,9 @@ type reading struct {
 
 func main() {
 	c := colly.NewCollector()
-	c.OnHTML("div[class = vk_bk TylWce SGNhVe]", func(h *colly.HTMLElement) {
-		println(h.Text)
+	c.OnHTML("span[class=wr-value--temperature--c]", func(h *colly.HTMLElement) {
+		println(h.ChildText("span[aria-hidden=true]"))
 	})
-	c.Visit("https://www.google.com/search?q=weather+in+patchway&oq=weather+in+patchway&aqs=chrome..69i64j0i22i30l5j0i15i22i30j0i390l3.9585j1j7&sourceid=chrome&ie=UTF-8")
+	c.Visit("https://www.bbc.co.uk/weather/2649452")
 
 }
