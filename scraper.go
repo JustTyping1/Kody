@@ -13,6 +13,7 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
 	input := scanner.Text()
+	println(input)
 	c := colly.NewCollector()
 	c.OnHTML("span[class=wr-value--temperature--c]", func(h *colly.HTMLElement) {
 		println(h.ChildText("span[aria-hidden=true]"))
