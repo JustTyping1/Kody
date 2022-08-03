@@ -1,23 +1,16 @@
 package main
 
 import (
-	"bufio"
-	"os"
-
 	"github.com/gocolly/colly"
 	//"strconv"
 )
 
 func main() {
-	println("ENTER CMD >")
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	input := scanner.Text()
-	println(input)
 	c := colly.NewCollector()
-	c.OnHTML("span[class=wr-value--temperature--c]", func(h *colly.HTMLElement) {
-		println(h.ChildText("span[aria-hidden=true]"))
+	c.OnHTML("div[vk_bk TylWce SGNhVe]", func(h *colly.HTMLElement) {
+		println(h.ChildText("span[wob_tm]"))
+
 	})
-	c.Visit("")
+	c.Visit("https://www.google.com/search?q=weather")
 
 }
