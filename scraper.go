@@ -7,10 +7,10 @@ import (
 
 func main() {
 	c := colly.NewCollector()
-	c.OnHTML("div[vk_bk TylWce SGNhVe]", func(h *colly.HTMLElement) {
-		println(h.ChildText("span[wob_tm]"))
+	c.OnHTML("div[aria-live=polite]", func(h *colly.HTMLElement) {
+		println(h.ChildText("div[data-val]"))
 
 	})
-	c.Visit("https://www.google.com/search?q=weather")
+	c.Visit("https://www.bing.com/search?q=weather")
 
 }
