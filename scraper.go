@@ -26,17 +26,29 @@ func main() {
 			a.OnHTML("div.QuoteStrip-lastPriceStripContainer", func(h *colly.HTMLElement) {
 				println("DJI :")
 				println(h.ChildText("span.QuoteStrip-lastPrice"))
-				println(h.ChildText("span.QuoteStrip-changeUp"))
 			})
 			a.Visit("https://www.cnbc.com/quotes/.DJI?qsearchterm=Dow%20Jones%20Industrial%20Average")
 
 			b := colly.NewCollector()
 			b.OnHTML("div.QuoteStrip-lastPriceStripContainer", func(h *colly.HTMLElement) {
-				println("DJI :")
+				println("S&P500 :")
 				println(h.ChildText("span.QuoteStrip-lastPrice"))
-				println(h.ChildText("span.QuoteStrip-changeUp"))
 			})
-			b.Visit("https://www.cnbc.com/quotes/.DJI?qsearchterm=Dow%20Jones%20Industrial%20Average")
+			b.Visit("https://www.cnbc.com/quotes/.SPX?qsearchterm=S&P")
+
+			d := colly.NewCollector()
+			d.OnHTML("div.QuoteStrip-lastPriceStripContainer", func(h *colly.HTMLElement) {
+				println("NASDAQ :")
+				println(h.ChildText("span.QuoteStrip-lastPrice"))
+			})
+			d.Visit("https://www.cnbc.com/quotes/.IXIC?qsearchterm=nasdaq")
+		}
+		if command == "n" {
+			e := colly.NewCollector()
+			e.OnHTML("div.story-content", func(h *colly.HTMLElement) {
+				println(h.ChildText("a"))
+			})
+			e.Visit("https://www.reuters.com/news/archive/worldNews?date=today")
 		}
 	}
 }
