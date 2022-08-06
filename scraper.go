@@ -50,5 +50,8 @@ func main() {
 			})
 			e.Visit("https://www.reuters.com/news/archive/worldNews?date=today")
 		}
+		if command == "e" {
+			running = false
+		}
 	}
 }
